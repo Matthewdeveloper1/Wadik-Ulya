@@ -8,6 +8,7 @@ import lera from './leraRamka.png';
 import mark from './markRamka.png';
 import flower from './flower.png';
 import tree from "./Tree.JPG"
+import together from "./together.JPG"
 
 function App() {
   const [isScrollingBlocked, setIsScrollingBlocked] = useState(true);
@@ -43,11 +44,11 @@ function App() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-        window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
     }, 0);
-    
+
     return () => clearTimeout(timer);
-}, []);
+  }, []);
 
   return (
     <div className="app">
@@ -90,7 +91,7 @@ function App() {
       </div>
       <div className='four'>
         <img className='rippedFour' src={ripped} alt="Ripped" />
-        <animated.img style={flowerAnimation} className='flower' src={flower} alt='flower'/>
+        <animated.img style={flowerAnimation} className='flower' src={flower} alt='flower' />
         <a className='fourText'>
           Наша Свадьба без вас не будет такой счастливой, уютной и веселой! Мы будем рады, если вы проведете этот особенный день с нами.
         </a>
@@ -99,9 +100,12 @@ function App() {
       <div className='place'>
         <h1 className='placeTitle'>PLACE</h1>
         <p className='placetext'>
-          Брестская область, Каменецкий район, деревня Баранки, дом 3, Агроэкоусадьба «Три колодца» 
+          наша свадьба пройдет в Агроэкоусадьбе «Три колодца»
+
+          Она находится по адресу:
+          Брестская область, Каменецкий район , деревня Баранки, дом 3
         </p>
-        <img className='tree' src={tree} alt='tree'/>
+        <img className='tree' src={tree} alt='tree' />
       </div>
       <div className='program'>
         <h1 className='titleProgramm'>
@@ -121,9 +125,24 @@ function App() {
           <p className='section'>
             <span className='time'>21:00-22:00</span>
             <span className='divider'></span>
-            <span className='event'>Торт, бенгальские огни</span>
+            <span className='event'>Торт, огни</span>
           </p>
         </div>
+      </div>
+      <div className='togPhoto'>
+        <img className='rippedFour' src={ripped} alt="Ripped" />
+        <img className='rippedFourBottom' src={ripped} alt="Ripped" />
+      </div>
+      <div className='details'>
+        <h1 className='detailsTitle'>DETAILS</h1>
+        <span className='detailsText'>
+          Пожалуйста, не дарите нам цветы, так как мы не успеем насладиться их красотой. Если вы хотите сделать нам комплимент,
+          замените букет кормом для домашних животных (котов и собак), чтобы бы мы могли отвезти в приют и покормить братьев наших меньших.❤️🐶🐱
+        </span>
+        <span className='dividerSecond'></span>
+        <span className='detailsText'>
+          Будем благодарны, если вы воздержитесь от криков «Горько» на празднике, ведь поцелуй- это знак выражения чувств, он не может быть по заказу.
+        </span>
       </div>
     </div>
   );
