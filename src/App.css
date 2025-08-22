@@ -238,6 +238,12 @@
     font-size: 18px;
     padding: 20px;
 }
+
+.tree{
+    margin: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .titleProgramm{
     display: flex;
     position: relative;
@@ -269,14 +275,14 @@
     width: 80%; /* Adjust as needed */
     padding: 10px 0; /* Padding for better spacing */
     font-family: 'Shippori Mincho B1', serif;
-    font-weight: 400;
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 12px;
 }
 
 .time {
     flex: 1; /* Takes up equal space */
     text-align: right; /* Aligns time to the right */
-    padding-right: 15px; /* Space between time and divider */
+    padding-right: 10px; /* Space between time and divider */
 }
 
 .divider {
@@ -288,7 +294,7 @@
 .event {
     flex: 1; /* Takes up equal space */
     text-align: left; /* Aligns event to the left */
-    padding-left: 15px; /* Space between divider and event */
+    padding-left: 10px; /* Space between divider and event */
 }
 
 .place{

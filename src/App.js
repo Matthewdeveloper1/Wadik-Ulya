@@ -7,6 +7,7 @@ import right from './right.png';
 import lera from './leraRamka.png';
 import mark from './markRamka.png';
 import flower from './flower.png';
+import tree from "./Tree.JPG"
 
 function App() {
   const [isScrollingBlocked, setIsScrollingBlocked] = useState(true);
@@ -39,6 +40,14 @@ function App() {
   useEffect(() => {
     document.body.style.overflow = isScrollingBlocked ? 'hidden' : 'auto';
   }, [isScrollingBlocked]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 0);
+    
+    return () => clearTimeout(timer);
+}, []);
 
   return (
     <div className="app">
@@ -92,6 +101,7 @@ function App() {
         <p className='placetext'>
           Брестская область, Каменецкий район, деревня Баранки, дом 3, Агроэкоусадьба «Три колодца» 
         </p>
+        <img className='tree' src={tree} alt='tree'/>
       </div>
       <div className='program'>
         <h1 className='titleProgramm'>
@@ -111,7 +121,7 @@ function App() {
           <p className='section'>
             <span className='time'>21:00-22:00</span>
             <span className='divider'></span>
-            <span className='event'>Торт, фейерверк</span>
+            <span className='event'>Торт, бенгальские огни</span>
           </p>
         </div>
       </div>
