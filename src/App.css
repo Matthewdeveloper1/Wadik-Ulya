@@ -9,6 +9,7 @@
     height: 120vh;
     flex-direction: column;
     overflow: hidden; /* Скрывать элементы, выходящие за пределы */
+    
 }
 
 .convert {
@@ -405,4 +406,36 @@
     position: absolute; /* Добавьте это, если еще не установлено */
     transform: translateX(-50%); /* Центрирование по горизонтали */
     top: 15px;
+}
+
+
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px; /* Расположение иконки */
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 1s infinite; /* Анимация */
+    z-index: 2;
+}
+
+.arrow-down {
+    width: 20px; /* Ширина стрелки */
+    height: 20px;
+    border: solid rgb(255, 255, 255); /* Цвет и форма стрелки */
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg); /* Поворот стрелки */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px); /* Поднимание стрелки */
+    }
+    60% {
+        transform: translateY(-5px); /* Небольшое опускание */
+    }
 }

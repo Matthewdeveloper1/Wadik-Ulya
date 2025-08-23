@@ -7,33 +7,37 @@ import right from './right.WebP';
 import lera from './leraRamka.WebP';
 import mark from './markRamka.WebP';
 import flower from './flower.WebP';
-import tree from "./Tree.WebP"
-import heart from "./heart.WebP"
+import tree from "./Tree.WebP";
+import heart from "./heart.WebP";
 
 function App() {
   const [isScrollingBlocked, setIsScrollingBlocked] = useState(true);
   const [scrollY, setScrollY] = useState(0);
+  const [isArrowVisible, setArrowVisible] = useState(true); // Состояние для стрелочки
 
   const flowerAnimation = useSpring({
     transform: scrollY > 950 ? 'translateX(0)' : 'translateX(-100vw)',
     opacity: scrollY > 950 ? 1 : 0,
   });
 
-   const heartAnimation = useSpring({
-    opacity: scrollY > 3400 ? 1 : 0, // Укажите значение прокрутки, при котором сердце станет видимым
-    config: { duration: 700 }, // Длительность анимации
+  const heartAnimation = useSpring({
+    opacity: scrollY > 3400 ? 1 : 0,
+    config: { duration: 700 },
   });
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
+      if (window.scrollY > 0 && isArrowVisible) {
+        setArrowVisible(false); // Скрыть стрелочку при прокрутке
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isArrowVisible]); // Добавьте зависимость
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -70,6 +74,11 @@ function App() {
             <a>03.10.2025</a>
           </div>
         </div>
+        {isArrowVisible && ( // Условный рендеринг стрелочки
+          <div className="scroll-indicator">
+            <div className="arrow-down"></div>
+          </div>
+        )}
         <img className='ripped' src={ripped} alt="Ripped" />
       </div>
 
@@ -107,7 +116,7 @@ function App() {
         <p className='placetext'>
           Cвадьба пройдет в Агроэкоусадьбе «Три колодца»
           Она находится по адресу:
-          Брестская область, Каменецкий район , деревня Баранки, дом 3
+          Брестская область, Каменецкий район, деревня Баранки, дом 3
         </p>
         <img className='tree' src={tree} alt='tree' />
       </div>
@@ -149,12 +158,11 @@ function App() {
         </span>
       </div>
       <div className='seeU'>
-        До встречи в октябре <br/> 03.10
+        До встречи в октябре <br /> 03.10
       </div>
       <div className='last'>
-        <animated.img style={heartAnimation} className='heart' src={heart} alt='heart'/>
+        <animated.img style={heartAnimation} className='heart' src={heart} alt='heart' />
         <img className='rippedFour' src={ripped} alt="Ripped" />
-       
       </div>
     </div>
   );
