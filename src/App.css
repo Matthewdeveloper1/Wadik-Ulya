@@ -365,9 +365,43 @@
 }
 
 .togPhoto{
+    background-position: center;
     background-image: url('./together.JPG');
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
     height: 90vh;
+}
+
+.seeU{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    font-family: 'Shippori Mincho B1', serif;
+    font-weight: 600;
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.last{
+    background-position: center;
+    background-image: url('./endPhoto.JPG');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    justify-content: center;
+    height: 70vh;
+}
+
+.heart {
+    display: flex;
+    justify-content: center;
+    z-index: 2; /* Убедитесь, что z-index больше */
+    height: 20vh;
+    left: 50%;
+    position: absolute; /* Добавьте это, если еще не установлено */
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    top: 15px;
 }

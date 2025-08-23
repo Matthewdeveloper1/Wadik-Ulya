@@ -8,15 +8,20 @@ import lera from './leraRamka.png';
 import mark from './markRamka.png';
 import flower from './flower.png';
 import tree from "./Tree.JPG"
-import together from "./together.JPG"
+import heart from "./heart.png"
 
 function App() {
   const [isScrollingBlocked, setIsScrollingBlocked] = useState(true);
   const [scrollY, setScrollY] = useState(0);
 
   const flowerAnimation = useSpring({
-    transform: scrollY > 700 ? 'translateX(0)' : 'translateX(-100vw)',
-    opacity: scrollY > 700 ? 1 : 0,
+    transform: scrollY > 950 ? 'translateX(0)' : 'translateX(-100vw)',
+    opacity: scrollY > 950 ? 1 : 0,
+  });
+
+   const heartAnimation = useSpring({
+    opacity: scrollY > 3400 ? 1 : 0, // Укажите значение прокрутки, при котором сердце станет видимым
+    config: { duration: 700 }, // Длительность анимации
   });
 
   useEffect(() => {
@@ -100,8 +105,7 @@ function App() {
       <div className='place'>
         <h1 className='placeTitle'>PLACE</h1>
         <p className='placetext'>
-          наша свадьба пройдет в Агроэкоусадьбе «Три колодца»
-
+          Cвадьба пройдет в Агроэкоусадьбе «Три колодца»
           Она находится по адресу:
           Брестская область, Каменецкий район , деревня Баранки, дом 3
         </p>
@@ -143,6 +147,14 @@ function App() {
         <span className='detailsText'>
           Будем благодарны, если вы воздержитесь от криков «Горько» на празднике, ведь поцелуй- это знак выражения чувств, он не может быть по заказу.
         </span>
+      </div>
+      <div className='seeU'>
+        До встречи в октябре <br/> 03.10
+      </div>
+      <div className='last'>
+        <animated.img style={heartAnimation} className='heart' src={heart} alt='heart'/>
+        <img className='rippedFour' src={ripped} alt="Ripped" />
+       
       </div>
     </div>
   );
