@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import './App.css';
-import ripped from './ripped.png';
-import left from './left.png';
-import right from './right.png';
-import lera from './leraRamka.png';
-import mark from './markRamka.png';
-import flower from './flower.png';
-import tree from "./Tree.JPG"
-import heart from "./heart.png"
+import ripped from './ripped.WebP';
+import left from './left.WebP';
+import right from './right.WebP';
+import lera from './leraRamka.WebP';
+import mark from './markRamka.WebP';
+import flower from './flower.WebP';
+import tree from "./Tree.WebP"
+import heart from "./heart.WebP"
 
 function App() {
   const [isScrollingBlocked, setIsScrollingBlocked] = useState(true);
