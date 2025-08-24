@@ -13,11 +13,12 @@ import heart from "./heart.WebP";
 function App() {
   const [isScrollingBlocked, setIsScrollingBlocked] = useState(true);
   const [scrollY, setScrollY] = useState(0);
-  const [isArrowVisible, setArrowVisible] = useState(true); // Состояние для стрелочки
+  const [isArrowVisible, setArrowVisible] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState(false); // Состояние для отслеживания загрузки изображений
 
   const flowerAnimation = useSpring({
-    transform: scrollY > 950 ? 'translateX(0)' : 'translateX(-100vw)',
-    opacity: scrollY > 950 ? 1 : 0,
+    transform: imagesLoaded && scrollY > 950 ? 'translateX(0)' : 'translateX(-100vw)',
+    opacity: imagesLoaded && scrollY > 950 ? 1 : 0,
   });
 
   const heartAnimation = useSpring({
@@ -26,10 +27,29 @@ function App() {
   });
 
   useEffect(() => {
+    // Функция для проверки загрузки изображений
+    const images = [ripped, left, right, lera, mark, flower, tree, heart];
+    let loadedImages = 0;
+
+    const handleImageLoad = () => {
+      loadedImages += 1;
+      if (loadedImages === images.length) {
+        setImagesLoaded(true); // Все изображения загружены
+      }
+    };
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = handleImageLoad;
+    });
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
       if (window.scrollY > 0 && isArrowVisible) {
-        setArrowVisible(false); // Скрыть стрелочку при прокрутке
+        setArrowVisible(false);
       }
     };
 
@@ -37,7 +57,7 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isArrowVisible]); // Добавьте зависимость
+  }, [isArrowVisible]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -74,7 +94,7 @@ function App() {
             <a>03.10.2025</a>
           </div>
         </div>
-        {isArrowVisible && ( // Условный рендеринг стрелочки
+        {isArrowVisible && (
           <div className="scroll-indicator">
             <div className="arrow-down"></div>
           </div>
@@ -85,7 +105,7 @@ function App() {
       <div className='second'>
         <div className='secondtext'>
           <div className='inviteTitle'>
-            <h1>WEDDING<br />INVINTATION</h1>
+            <h1>WEDDING<br />INVITATION</h1>
           </div>
           <div className='inviteText'>
             <a>
