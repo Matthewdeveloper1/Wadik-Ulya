@@ -7,18 +7,19 @@ import right from './right.WebP';
 import lera from './leraRamka.WebP';
 import mark from './markRamka.WebP';
 import flower from './flower.WebP';
-import tree from "./Tree.WebP";
+import tree from "./place.png";
 import heart from "./heart.WebP";
-
+import mainph from './main.png'
 function App() {
   const [isScrollingBlocked, setIsScrollingBlocked] = useState(true);
   const [scrollY, setScrollY] = useState(0);
   const [isArrowVisible, setArrowVisible] = useState(true);
-  const [imagesLoaded, setImagesLoaded] = useState(false); // Состояние для отслеживания загрузки изображений
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [animateLeftRight, setAnimateLeftRight] = useState(false); // Состояние для анимации
 
   const flowerAnimation = useSpring({
-    transform: imagesLoaded && scrollY > 950 ? 'translateX(0)' : 'translateX(-100vw)',
-    opacity: imagesLoaded && scrollY > 950 ? 1 : 0,
+    transform: imagesLoaded && scrollY > 700 ? 'translateX(0)' : 'translateX(-100vw)',
+    opacity: imagesLoaded && scrollY > 700 ? 1 : 0,
   });
 
   const heartAnimation = useSpring({
@@ -26,15 +27,25 @@ function App() {
     config: { duration: 700 },
   });
 
+  const leftAnimation = useSpring({
+    transform: animateLeftRight ? 'translateX(-50px)' : 'translateX(0)',
+    config: { tension: 220, friction: 20 },
+  });
+
+  const rightAnimation = useSpring({
+    transform: animateLeftRight ? 'translateX(50px)' : 'translateX(0)',
+    config: { tension: 220, friction: 20 },
+  });
+
   useEffect(() => {
-    // Функция для проверки загрузки изображений
     const images = [ripped, left, right, lera, mark, flower, tree, heart];
     let loadedImages = 0;
 
     const handleImageLoad = () => {
       loadedImages += 1;
       if (loadedImages === images.length) {
-        setImagesLoaded(true); // Все изображения загружены
+        setImagesLoaded(true);
+        setAnimateLeftRight(true); // Запуск анимации после загрузки изображений
       }
     };
 
@@ -83,29 +94,31 @@ function App() {
     <div className="app">
       <div className="firstPage">
         <div className='convert'>
-          <img className='left' src={left} alt="Left" />
-          <img className='right' src={right} alt="Right" />
+          <animated.img style={leftAnimation} className='left' src={left} alt="Left" />
+          <animated.img style={rightAnimation} className='right' src={right} alt="Right" />
         </div>
         <div className='mainText'>
-          <h1 className=''>WEDDING </h1>
-          <h1 className=''>DAY </h1>
-          <div className='des'>
-            <a>Mark & Lera</a>
-            <a>03.10.2025</a>
+          <img className='mainph' src={mainph} alt='tree' />
+          <div className='wedday'>
+            <h1 className=''>Wedding </h1>
+            <h1 className=''>Day </h1>
           </div>
         </div>
+        <div className='des'>
+            <a className='WadimUlya'>Wadim & Uliana</a>
+            <a>03.10.2025</a>
+          </div>
         {isArrowVisible && (
           <div className="scroll-indicator">
             <div className="arrow-down"></div>
           </div>
         )}
-        <img className='ripped' src={ripped} alt="Ripped" />
       </div>
 
       <div className='second'>
         <div className='secondtext'>
           <div className='inviteTitle'>
-            <h1>WEDDING<br />INVITATION</h1>
+            <h1 className='inviteTitle'>Wedding<br />Invintation</h1>
           </div>
           <div className='inviteText'>
             <a>
@@ -117,32 +130,30 @@ function App() {
 
       <div className='third'>
         <div className='rippedContainer'>
-          <div className='childImg'>
-            <img className='leraRamka' src={lera} alt="Lera" />
-            <img className='markRamka' src={mark} alt="Mark" />
-          </div>
         </div>
       </div>
       <div className='four'>
-        <img className='rippedFour' src={ripped} alt="Ripped" />
+        
         <animated.img style={flowerAnimation} className='flower' src={flower} alt='flower' />
+        <div className='border'>
         <a className='fourText'>
           Наша Свадьба без вас не будет такой счастливой, уютной и веселой! Мы будем рады, если вы проведете этот особенный день с нами.
         </a>
-        <img className='rippedFourBottom' src={ripped} alt="Ripped" />
+        </div>
       </div>
       <div className='place'>
-        <h1 className='placeTitle'>PLACE</h1>
+        <h1 className='placeTitle'>Location</h1>
+        <img className='tree' src={tree} alt='tree' />
         <p className='placetext'>
           Cвадьба пройдет в Агроэкоусадьбе «Три колодца»
           Она находится по адресу:
           Брестская область, Каменецкий район, деревня Баранки, дом 3
         </p>
-        <img className='tree' src={tree} alt='tree' />
       </div>
       <div className='program'>
+        <div className='border'>
         <h1 className='titleProgramm'>
-          WEDDING<br /> PROGRAM
+          Wedding<br /> Program
         </h1>
         <div className='programSections'>
           <p className='section'>
@@ -161,13 +172,12 @@ function App() {
             <span className='event'>Торт, огни</span>
           </p>
         </div>
+        </div>
       </div>
       <div className='togPhoto'>
-        <img className='rippedFour' src={ripped} alt="Ripped" />
-        <img className='rippedFourBottom' src={ripped} alt="Ripped" />
       </div>
       <div className='details'>
-        <h1 className='detailsTitle'>DETAILS</h1>
+        <h1 className='detailsTitle'>Details</h1>
         <span className='detailsText'>
           Пожалуйста, не дарите нам цветы, так как мы не успеем насладиться их красотой. Если вы хотите сделать нам комплимент,
           замените букет кормом для домашних животных (котов и собак), чтобы бы мы могли отвезти в приют и покормить братьев наших меньших.❤️🐶🐱
@@ -177,12 +187,26 @@ function App() {
           Будем благодарны, если вы воздержитесь от криков «Горько» на празднике, ведь поцелуй- это знак выражения чувств, он не может быть по заказу.
         </span>
       </div>
+      <div className='dress'>
+        <div className='program'>
+          <div className='border'>
+        <h1 className='titleDress'>
+          Dress code
+        </h1>
+        <div className='dressSections'>          
+          <p className='dressText'>
+            Будем рады видеть вас в цветах, которые мы выбрали для праздника - 
+            это добавит особое настроение.
+          </p>
+          </div>
+        </div>
+        </div>
+      </div>
       <div className='seeU'>
         До встречи в октябре <br /> 03.10
       </div>
       <div className='last'>
-        <animated.img style={heartAnimation} className='heart' src={heart} alt='heart' />
-        <img className='rippedFour' src={ripped} alt="Ripped" />
+        {/* <animated.img style={heartAnimation} className='heart' src={heart} alt='heart' /> */}
       </div>
     </div>
   );

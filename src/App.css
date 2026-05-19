@@ -2,13 +2,30 @@
     max-width: 100vw; /* Максимальная ширина 100% от ширины экрана */
     width: 100%; /* Ширина 100% для адаптации */
     box-sizing: border-box; /* Учитываем отступы и границы в ширину */
+    color: #9a997b;
+}
+
+.mainph{
+    display: flex;
+    padding: 20px;
+    padding-top: 0;
+    object-fit: cover;
+    height: 90vh;
+}
+
+.wedday{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
 }
 
 .firstPage {
     display: flex;
-    height: 120vh;
     flex-direction: column;
     overflow: hidden; /* Скрывать элементы, выходящие за пределы */
+    color: white;
     
 }
 
@@ -67,7 +84,6 @@
 }
 
 .firstPage::before {
-    background-image: url('./main.WebP');
     background-size: cover;
     background-repeat: no-repeat;
     filter: brightness(40%);
@@ -79,16 +95,17 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); 
     z-index: 1; 
 }
 
 .mainText{
     display: flex;
-    font-family: 'Shippori Mincho B1', serif;
+    font-family: "WindSong", cursive;
+    font-weight: 500;
+    font-style: normal;
     height: 100vh;
     font-weight: 800;
-    font-size: 60px;
+    font-size: 80px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -97,12 +114,14 @@
     z-index: 2;
 }
 
+.WadimUlya{
+    font-size: 70px;
+}
+
 .des{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-    font-size: 50px;
     font-family: "Tangerine", cursive;
     font-weight: 700;
     font-style: normal;
@@ -152,6 +171,7 @@
     align-items: center;
     flex-direction: column;
     gap: 10px;
+    padding: 20px;
 }
 
 .third {
@@ -180,53 +200,20 @@
     
 }
 
-.leraRamka{
-    width: 40%;
-    transform: rotate(-8deg);
-    border-radius: 5px;
-}
-
-.markRamka{
-    margin-top: 60px;
-    width: 40%;
-    transform: rotate(12deg);
-    border-radius: 5px;
-}
 
 .four{
     display: flex;
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url('./fourMain.WebP');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 60vh;
-    
 }
 
 .four a{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-}
-
-.rippedFour{
-    display: flex;
-    position: absolute;
-    transform: rotate(180deg);
-    align-items: start;
-    top: -21px;
-    z-index: 1;
-    width: 100%;
-}
-
-.rippedFourBottom{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    bottom: -21px;
 }
 
 .fourText{
@@ -238,10 +225,17 @@
     font-weight: 400;
     font-size: 18px;
     padding: 20px;
+    background-color: #fee4cb;
+    color: #1f2203;
+    height: 40vh;
+    margin: 20px;
+    border-radius: 20px;
 }
 
 .tree{
     margin: 20px;
+    margin-left: 0;
+    margin-right: 0;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -249,11 +243,17 @@
     display: flex;
     position: relative;
     justify-content: center;
-    font-family: 'Shippori Mincho B1', serif;
-    font-weight: 600;
-    font-size: 30px;
+    font-family: "WindSong", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 70px;
 }
-
+.inviteTitle{
+    font-family: "WindSong", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+}
 .program {
     display: flex;
     justify-content: center;
@@ -262,7 +262,11 @@
     text-align: center;
     margin-top: 40px;
     margin-bottom: 40px;
-    
+    background-color: #fee4cb;
+    color: #1f2203;
+    height: 70vh;
+    margin: 20px;
+    border-radius: 20px;
 }
 
 .programSections {
@@ -274,7 +278,7 @@
 .section {
     display: flex;
     align-items: center;
-    width: 80%; /* Adjust as needed */
+    width: 100%; /* Adjust as needed */
     padding: 10px 0; /* Padding for better spacing */
     font-family: 'Shippori Mincho B1', serif;
     font-weight: 600;
@@ -309,9 +313,11 @@
     display: flex;
     position: relative;
     justify-content: center;
-    font-family: 'Shippori Mincho B1', serif;
-    font-weight: 600;
-    font-size: 30px;
+    font-family: "WindSong", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 70px;
+    margin: 24px;
 }
 
 .placetext{
@@ -346,9 +352,10 @@
     display: flex;
     justify-content: center;
     position: relative;
-    font-family: 'Shippori Mincho B1', serif;
-    font-weight: 600;
-    font-size: 30px;
+    font-family: "WindSong", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 70px;
 }
 
 .detailsText{
@@ -365,14 +372,6 @@
 
 }
 
-.togPhoto{
-    background-position: center;
-    background-image: url('./together.WebP');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    height: 90vh;
-}
 
 .seeU{
     display: flex;
@@ -387,7 +386,7 @@
     margin-bottom: 10px;
 }
 
-.last{
+/* .last{
     background-position: center;
     background-image: url('./endPhoto.WebP');
     background-size: cover;
@@ -395,7 +394,7 @@
     position: relative;
     justify-content: center;
     height: 70vh;
-}
+} */
 
 .heart {
     display: flex;
@@ -438,4 +437,37 @@
     60% {
         transform: translateY(-5px); /* Небольшое опускание */
     }
+}
+
+.border{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #1f2203;
+    border-radius: 20px;
+    height: 100%;
+    margin: 10px;
+}
+
+.dress{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.titleDress{
+    font-family: "WindSong", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 70px;
+
+}
+
+.dressText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
