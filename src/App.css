@@ -11,6 +11,7 @@
     padding-top: 0;
     object-fit: cover;
     height: 90vh;
+    opacity: 0.9;
 }
 
 .wedday{
@@ -19,6 +20,7 @@
     align-items: center;
     justify-content: center;
     position: absolute;
+    top: 140px;
 }
 
 .firstPage {
@@ -220,15 +222,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     font-family: 'Shippori Mincho B1', serif;
     text-align: center;
     font-weight: 400;
     font-size: 18px;
     padding: 20px;
-    background-color: #fee4cb;
-    color: #1f2203;
+    color: white;
     height: 40vh;
-    margin: 20px;
     border-radius: 20px;
 }
 
@@ -264,7 +265,6 @@
     margin-bottom: 40px;
     background-color: #fee4cb;
     color: #1f2203;
-    height: 70vh;
     margin: 20px;
     border-radius: 20px;
 }
@@ -273,13 +273,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .section {
     display: flex;
     align-items: center;
     width: 100%; /* Adjust as needed */
-    padding: 10px 0; /* Padding for better spacing */
+    padding: 5px 0; /* Padding for better spacing */
     font-family: 'Shippori Mincho B1', serif;
     font-weight: 600;
     font-size: 14px;
@@ -287,7 +289,7 @@
 
 .time {
     flex: 1; /* Takes up equal space */
-    text-align: right; /* Aligns time to the right */
+    font-size: 16px;
     padding-right: 10px; /* Space between time and divider */
 }
 
@@ -317,7 +319,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 70px;
-    margin: 24px;
+    margin-top: 24px;
 }
 
 .placetext{
@@ -328,7 +330,7 @@
 
 .flower{
     position: absolute;
-    top: -100px;
+    top: -700px;
     z-index: 4;
     width: 210px;
 }
@@ -383,7 +385,15 @@
     font-weight: 600;
     font-size: 30px;
     padding-top: 20px;
-    margin-bottom: 10px;
+    background-image: url('https://i.pinimg.com/webp/1200x/66/97/82/669782cd9d75d4fed64402372e58b84e.webp');
+    background-size: cover;
+    border-radius: 20px 20px 0px 0px;
+    margin-top: 40px;
+}
+
+.seeUText{
+    color: white;
+    opacity: 1;
 }
 
 /* .last{
@@ -448,6 +458,7 @@
     border-radius: 20px;
     height: 100%;
     margin: 10px;
+    padding: 20px;
 }
 
 .dress{
@@ -455,6 +466,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-top: 20px;
 }
 
 .titleDress{
@@ -470,4 +482,116 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.calendar{
+    color: #9a997b;
+    text-align: justify
+}
+
+.calendar { 
+    width: 280px; 
+    font-family: Arial, sans-serif; 
+}
+.week {
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr); 
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px; 
+}
+.week span { 
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.week span:empty {
+     background: transparent;
+}
+.day { 
+    position: cover;
+    font-size: 30px;
+    color: #fff;
+}
+.fourTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "WindSong", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    color: #9a997b;
+}
+
+.date{
+    font-size: 30px;
+}
+
+.colors{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 14px;
+}
+
+.cafe{
+    width: 50px;
+    height: 50px;
+    background-color: #4C3d19;
+    border-radius: 50px;
+}
+
+.kombu{
+    width: 50px;
+    height: 50px;
+    background-color: #354024;
+    border-radius: 50px;
+}
+
+.moss{
+    width: 50px;
+    height: 50px;
+    background-color: #889063;
+    border-radius: 50px;
+}
+
+.tan{
+    width: 50px;
+    height: 50px;
+    background-color: #CFBB99;
+    border-radius: 50px;
+}
+
+.bone{
+    width: 50px;
+    height: 50px;
+    background-color: #E5D7C4;
+    border-radius: 50px;
+}
+
+.programDress{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: #fee4cb;
+    color: #1f2203;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.titleBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

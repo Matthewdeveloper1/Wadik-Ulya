@@ -18,8 +18,8 @@ function App() {
   const [animateLeftRight, setAnimateLeftRight] = useState(false); // Состояние для анимации
 
   const flowerAnimation = useSpring({
-    transform: imagesLoaded && scrollY > 700 ? 'translateX(0)' : 'translateX(-100vw)',
-    opacity: imagesLoaded && scrollY > 700 ? 1 : 0,
+    transform: imagesLoaded && scrollY > 400 ? 'translateX(0)' : 'translateX(-100vw)',
+    opacity: imagesLoaded && scrollY > 400 ? 1 : 0,
   });
 
   const heartAnimation = useSpring({
@@ -90,6 +90,16 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    // 1. Отключаем автопрокрутку браузера
+    if (window.history.scrollRestoration) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // 2. На всякий случай скроллим вверх при монтировании
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="app">
       <div className="firstPage">
@@ -105,9 +115,9 @@ function App() {
           </div>
         </div>
         <div className='des'>
-            <a className='WadimUlya'>Wadim & Uliana</a>
-            <a>03.10.2025</a>
-          </div>
+          <a className='WadimUlya'>Wadim & Uliana</a>
+          <a className='date'>03.10.2025</a>
+        </div>
         {isArrowVisible && (
           <div className="scroll-indicator">
             <div className="arrow-down"></div>
@@ -127,51 +137,98 @@ function App() {
           </div>
         </div>
       </div>
-
-      <div className='third'>
-        <div className='rippedContainer'>
-        </div>
-      </div>
       <div className='four'>
-        
+
         <animated.img style={flowerAnimation} className='flower' src={flower} alt='flower' />
         <div className='border'>
-        <a className='fourText'>
-          Наша Свадьба без вас не будет такой счастливой, уютной и веселой! Мы будем рады, если вы проведете этот особенный день с нами.
-        </a>
+          <a className='fourText'>
+            <h1 className='fourTitle'>June</h1>
+            <div className="calendar">
+              <div className="week">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+              </div>
+              <div className="week">
+                <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+              </div>
+              <div className="week">
+                <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span className="day">21</span>
+              </div>
+              <div className="week">
+                <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
+              </div>
+              <div className="week">
+                <span>29</span><span>30</span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
       <div className='place'>
         <h1 className='placeTitle'>Location</h1>
         <img className='tree' src={tree} alt='tree' />
         <p className='placetext'>
-          Cвадьба пройдет в Агроэкоусадьбе «Три колодца»
+          Cвадьба пройдет в Агроусадьбе «Семисоны»
           Она находится по адресу:
-          Брестская область, Каменецкий район, деревня Баранки, дом 3
+          д. Семисосны, 6/1
         </p>
       </div>
       <div className='program'>
         <div className='border'>
-        <h1 className='titleProgramm'>
-          Wedding<br /> Program
-        </h1>
-        <div className='programSections'>
-          <p className='section'>
-            <span className='time'>14:00-14:30</span>
-            <span className='divider'></span>
-            <span className='event'>Сбор гостей</span>
-          </p>
-          <p className='section'>
-            <span className='time'>14:30-21:00</span>
-            <span className='divider'></span>
-            <span className='event'>Начало, Банкет </span>
-          </p>
-          <p className='section'>
-            <span className='time'>21:00-22:00</span>
-            <span className='divider'></span>
-            <span className='event'>Торт, огни</span>
-          </p>
-        </div>
+          <h1 className='titleProgramm'>
+            Wedding<br /> Program
+          </h1>
+          <div className='programSections'>
+            <p className='section'>
+              <span className='time'>13:30</span>
+              <span className='divider'></span>
+              <span className='event'>Сбор гостей</span>
+            </p>
+            <p className='section'>
+              <span className='time'>14:00</span>
+              <span className='divider'></span>
+              <span className='event'>бракосочетание </span>
+            </p>
+            <p className='section'>
+              <span className='time'>14:30</span>
+              <span className='divider'></span>
+              <span className='event'>поздравления</span>
+            </p>
+            <p className='section'>
+              <span className='time'>15:30</span>
+              <span className='divider'></span>
+              <span className='event'>банкет</span>
+            </p>
+            <p className='section'>
+              <span className='time'>16:00</span>
+              <span className='divider'></span>
+              <span className='event'>программа</span>
+            </p>
+            <p className='section'>
+              <span className='time'>16:30</span>
+              <span className='divider'></span>
+              <span className='event'>перерыв</span>
+            </p>
+            <p className='section'>
+              <span className='time'>17:00</span>
+              <span className='divider'></span>
+              <span className='event'>программа</span>
+            </p>
+            <p className='section'>
+              <span className='time'>18:30</span>
+              <span className='divider'></span>
+              <span className='event'>перерыв</span>
+            </p>
+            <p className='section'>
+              <span className='time'>19:00</span>
+              <span className='divider'></span>
+              <span className='event'>программа</span>
+            </p>
+            <p className='section'>
+              <span className='time'>20:30</span>
+              <span className='divider'></span>
+              <span className='event'>завершение</span>
+            </p>
+          </div>
         </div>
       </div>
       <div className='togPhoto'>
@@ -179,31 +236,44 @@ function App() {
       <div className='details'>
         <h1 className='detailsTitle'>Details</h1>
         <span className='detailsText'>
-          Пожалуйста, не дарите нам цветы, так как мы не успеем насладиться их красотой. Если вы хотите сделать нам комплимент,
-          замените букет кормом для домашних животных (котов и собак), чтобы бы мы могли отвезти в приют и покормить братьев наших меньших.❤️🐶🐱
-        </span>
-        <span className='dividerSecond'></span>
-        <span className='detailsText'>
-          Будем благодарны, если вы воздержитесь от криков «Горько» на празднике, ведь поцелуй- это знак выражения чувств, он не может быть по заказу.
+          1. Наш праздник-для взрослых, поэтому просим Вас оставить детей под присмотром перед приездом на торжество.
+          <br />2. О подарках: Ваши пожелания в конвертах помогут осуществить наши мечты. Пожалуйста, не дарите нам цветы, мы очень расстроимся, когда не сможем забрать их с собой.
+          <br />3. Если Вы планируете подготовить креативный номер, который требует подготовки, Вы можете связаться с нашим ведущим Василием +375297458876, он поможет с организацией!
+          <br />4. Просим подтвердить Ваше присутствие на нашем празднике до 01. 06. 2026.
+          <br />5. Цветовая гамма нашей свадьбы представлена ниже, просим поддержать ее при выборе Вашего наряда:
         </span>
       </div>
       <div className='dress'>
-        <div className='program'>
+        <div className='programDress'>
           <div className='border'>
-        <h1 className='titleDress'>
-          Dress code
-        </h1>
-        <div className='dressSections'>          
-          <p className='dressText'>
-            Будем рады видеть вас в цветах, которые мы выбрали для праздника - 
-            это добавит особое настроение.
-          </p>
+            <div className='titleBlock'>
+              <h1 className='titleDress'>
+                Dress code
+              </h1>
+              <div className='dressSections'>
+                <p className='dressText'>
+                  Будем рады видеть вас в цветах, которые мы выбрали для праздника -
+                  это добавит особое настроение.
+                </p>
+                <div className='colors'>
+                  <span className='cafe'> </span>
+                  <span className='kombu'> </span>
+                  <span className='moss'> </span>
+                  <br/>
+                  <span className='tan'> </span>
+                  <span className='bone'> </span>
+                </div>
+              </div>
+            </div>
+
           </div>
-        </div>
         </div>
       </div>
       <div className='seeU'>
-        До встречи в октябре <br /> 03.10
+        <div className='seeUText'>
+          До встречи в октябре <br /> 03.10
+        </div>
+
       </div>
       <div className='last'>
         {/* <animated.img style={heartAnimation} className='heart' src={heart} alt='heart' /> */}
